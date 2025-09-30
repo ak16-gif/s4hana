@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Countdown</title>
+<style>
+        body {
+            background: #222;
+            color: #0f0;
+            font-family: monospace;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+ 
+        h1 {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+ 
+        h2 {
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+ 
+        #countdown {
+            font-size: 80px;
+            font-weight: bold;
+            background-color: #111;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #0f0;
+        }
+</style>
+</head>
+<body>
+<h1>S4 HANA Go Live</h1>
+<h2>Countdown Begins</h2>
+<div id="countdown"></div>
+ 
+    <script>
+        var countdownDate = new Date("November 6, 2025 10:30:00").getTime();
+ 
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countdownDate - now;
+ 
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+ 
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "MEETING STARTED";
+            } else {
+                document.getElementById("countdown").innerHTML =
+                    days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+            }
+        }, 1000);
+</script>
+</body>
+</html>
